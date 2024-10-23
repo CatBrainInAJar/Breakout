@@ -15,6 +15,7 @@ PowerupFireBall::~PowerupFireBall()
     if (pInteger != nullptr)
     {
         // use my pointer to do things.
+        
     }
 
 

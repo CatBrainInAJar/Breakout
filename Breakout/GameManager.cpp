@@ -13,6 +13,11 @@ GameManager::GameManager(sf::RenderWindow* window)
     _masterText.setPosition(50, 400);
     _masterText.setCharacterSize(48);
     _masterText.setFillColor(sf::Color::Yellow);
+
+    //camView.setViewport(sf::FloatRect(0.25f, 0.25, 0.5f, 0.5f));
+    //camView = _window.getDefaultView();
+    //window.setView(camView);
+
 }
 
 void GameManager::initialize()
@@ -26,6 +31,7 @@ void GameManager::initialize()
 
     // Create bricks
     _brickManager->createBricks(5, 10, 80.0f, 30.0f, 5.0f);
+
 }
 
 void GameManager::update(float dt)
@@ -93,6 +99,25 @@ void GameManager::loseLife()
     _ui->lifeLost(_lives);
 
     // TODO screen shake.
+    
+    // rotate the view at 20 degrees
+    camView.setRotation(20.f);
+    camView.setCenter(200.f, 200.f);
+   // camView.setRotation(-20.f);
+   // camView.setCenter(-200.f, -200.f);
+
+    camView.setCenter(0, 0);
+}
+
+void GameManager::addLife()
+{
+    
+    if (_lives <= 3); {
+
+        _lives++;
+    }
+    _ui->lifeLost(_lives);
+
 }
 
 void GameManager::render()

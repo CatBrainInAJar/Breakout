@@ -16,6 +16,7 @@ public:
     void initialize();
     void update(float dt);
     void loseLife();
+    void addLife();
     void render();
     void levelComplete();
     void powerupEffect(POWERUPS pu, float t);
@@ -46,6 +47,8 @@ private:
     PowerupManager* _powerupManager;
     MessagingSystem* _messagingSystem;
     UI* _ui;
+
+    sf::View camView;
 
     static constexpr float PAUSE_TIME_BUFFER = 0.5f;
     static constexpr float POWERUP_FREQUENCY = 7.5f;    // time between minimum powerup spawn
