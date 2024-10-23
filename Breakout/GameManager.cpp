@@ -112,11 +112,12 @@ void GameManager::loseLife()
 void GameManager::addLife()
 {
     
-    if (_lives <= 3); {
+    if (_lives < 3); {
 
         _lives++;
     }
-    _ui->lifeLost(_lives);
+    //_ui->lifegain(_lives);
+    //_ui->lifegain(3);
 
 }
 

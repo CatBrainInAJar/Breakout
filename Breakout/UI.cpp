@@ -60,6 +60,17 @@ void UI::updatePowerupText(std::pair<POWERUPS, float> powerup)
 		_powerupText.setString("fire " + oss.str());
 		_powerupText.setFillColor(extraBallEffectsColour);
 		break;
+
+	case bigBall:
+		oss << std::fixed << std::setprecision(2) << powerup.second;
+		_powerupText.setString("bigBall " + oss.str());
+		_powerupText.setFillColor(extraBallEffectsColour);
+		break;
+	case smallBall:
+		oss << std::fixed << std::setprecision(2) << powerup.second;
+		_powerupText.setString("smallBall " + oss.str());
+		_powerupText.setFillColor(extraBallEffectsColour);
+		break;
 	case none:
 		_powerupText.setString("");
 		
@@ -70,6 +81,10 @@ void UI::updatePowerupText(std::pair<POWERUPS, float> powerup)
 void UI::lifeLost(int lives)
 {
 	_lives[_lives.size() - 1 - lives].setFillColor(sf::Color::Transparent);
+}
+void UI::lifegain(int lives)
+{
+	_lives[_lives.size() - 1 + lives].setFillColor(sf::Color::Transparent);
 }
 
 void UI::render()

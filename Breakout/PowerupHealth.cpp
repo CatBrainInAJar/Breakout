@@ -15,5 +15,6 @@ PowerupHealth::~PowerupHealth()
 std::pair<POWERUPS, float> PowerupHealth::applyEffect()
 {
     //_ball->setVelocity(2.f, 5.0f);
+    _ball->setGiveLife(true);
     return { health, 5.0f };
 }

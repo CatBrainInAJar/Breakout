@@ -8,6 +8,8 @@ Ball::Ball(sf::RenderWindow* window, float velocity, GameManager* gameManager)
     _sprite.setRadius(RADIUS);
     _sprite.setFillColor(sf::Color::Cyan);
     _sprite.setPosition(0, 300);
+    _isDefualtSize = true;
+    _givelife=false;
 }
 
 Ball::~Ball()
@@ -20,6 +22,7 @@ void Ball::update(float dt)
     if (_timeWithPowerupEffect > 0.f)
     {
         _timeWithPowerupEffect -= dt;
+        
     }
     else
     {
@@ -29,7 +32,9 @@ void Ball::update(float dt)
         {
             setFireBall(0);    // disable fireball
             _sprite.setFillColor(sf::Color::Cyan);  // back to normal colour.
-        }        
+        }   
+        sizeMultiplier = 1;
+        
     }
 
     // Fireball effect
@@ -38,6 +43,16 @@ void Ball::update(float dt)
         // Flickering effect
         int flicker = rand() % 50 + 205; // Random value between 205 and 255
         _sprite.setFillColor(sf::Color(flicker, flicker / 2, 0)); // Orange flickering color
+    }
+       
+    // Size effect
+    _sprite.setRadius(RADIUS * sizeMultiplier);
+
+    //life
+    if (_givelife)
+    {
+        _gameManager->addLife();
+        _givelife = false;
     }
 
     // Update position with a subtle floating-point error
@@ -101,6 +116,18 @@ void Ball::setVelocity(float coeff, float duration)
 {
     _velocity = coeff * VELOCITY;
     _timeWithPowerupEffect = duration;
+}
+
+void Ball::setSize(float sizeMulti, float duration)
+{
+    sizeMultiplier = sizeMulti;
+    _isDefualtSize = false;
+    _timeWithPowerupEffect = duration;
+}
+
+void Ball::setGiveLife(bool life)
+{
+    _givelife = life;
 }
 
 void Ball::setFireBall(float duration)

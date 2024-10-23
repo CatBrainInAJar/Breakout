@@ -14,15 +14,20 @@ public:
     void render();
     void setVelocity(float coeff, float duration);
     void setFireBall(float duration);
+    void setSize(float sizeMulti, float duration);
+    void setGiveLife(bool life);
 
 private:
     sf::CircleShape _sprite;
     sf::Vector2f _direction;
     sf::RenderWindow* _window;
     float _velocity;
+    bool _givelife;
     bool _isAlive;
     bool _isFireBall;
+    bool _isDefualtSize;
     float _timeWithPowerupEffect;
+    float sizeMultiplier;
 
     GameManager* _gameManager;  // Reference to the GameManager
 
