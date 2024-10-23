@@ -14,6 +14,7 @@ GameManager::GameManager(sf::RenderWindow* window)
     _masterText.setCharacterSize(48);
     _masterText.setFillColor(sf::Color::Yellow);
 
+
     //camView.setViewport(sf::FloatRect(0.25f, 0.25, 0.5f, 0.5f));
     //camView = _window.getDefaultView();
     //window.setView(camView);
@@ -28,7 +29,7 @@ void GameManager::initialize()
     _ball = new Ball(_window, 400.0f, this); 
     _powerupManager = new PowerupManager(_window, _paddle, _ball);
     _ui = new UI(_window, _lives, this);
-
+    _multiBallActived = false;
     // Create bricks
     _brickManager->createBricks(5, 10, 80.0f, 30.0f, 5.0f);
 
@@ -72,6 +73,21 @@ void GameManager::update(float dt)
     {
         return;
     }
+    if (_multiBallActived) {
+        for (int i = 0; i < 4; i++) {
+
+            ball_List[i] = new Ball(_window, 400.0f, this);
+            ball_List[i]->setVelocity(i/10, 0.5);
+        }
+
+     }
+    else {//not efficent
+        for (int i = 0; i < 4; i++) {
+           // ball_List[i] = NULL;
+        }
+        _multiBallActived = false;
+    }
+
 
     // timer.
     _time += dt;
@@ -120,11 +136,17 @@ void GameManager::addLife()
     //_ui->lifegain(3);
 
 }
+void GameManager::setMultiBallActive()
+{
+    _multiBallActived = true;
+}
 
 void GameManager::render()
 {
     _paddle->render();
     _ball->render();
+    //if (_multiBallActived) { for (int i = 0; i < 4; i++) { ball_List[i]->render();} }
+   // ball_List[1]->render();
     _brickManager->render();
     _powerupManager->render();
     _window->draw(_masterText);

@@ -130,6 +130,11 @@ void Ball::setGiveLife(bool life)
     _givelife = life;
 }
 
+void Ball::set_multiActive()
+{
+    _gameManager->setMultiBallActive();
+}
+
 void Ball::setFireBall(float duration)
 {
     if (duration) 

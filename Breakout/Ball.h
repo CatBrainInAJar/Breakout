@@ -16,6 +16,7 @@ public:
     void setFireBall(float duration);
     void setSize(float sizeMulti, float duration);
     void setGiveLife(bool life);
+    void set_multiActive();
 
 private:
     sf::CircleShape _sprite;
@@ -23,6 +24,7 @@ private:
     sf::RenderWindow* _window;
     float _velocity;
     bool _givelife;
+    bool _multiActive;
     bool _isAlive;
     bool _isFireBall;
     bool _isDefualtSize;

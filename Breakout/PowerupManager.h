@@ -14,6 +14,7 @@
 #include "PowerupHealth.h"
 #include "PowerupBigBall.h"
 #include "PowerupSmallBall.h"
+#include "PowerupMultiBall.h"
 #include "Paddle.h"
 #include "Ball.h"
 

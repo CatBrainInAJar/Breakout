@@ -11,6 +11,7 @@ enum POWERUPS
     health,
     bigBall,
     smallBall,
+    multiBall,
     none
 };
 

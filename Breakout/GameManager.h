@@ -17,6 +17,7 @@ public:
     void update(float dt);
     void loseLife();
     void addLife();
+    void setMultiBallActive();
     void render();
     void levelComplete();
     void powerupEffect(POWERUPS pu, float t);
@@ -35,6 +36,7 @@ private:
     float _timeLastPowerupSpawned;
     int _lives;
     bool _levelComplete;
+    bool _multiBallActived;
     std::pair<POWERUPS, float> _powerupInEffect;
 
     sf::Font _font;
@@ -43,6 +45,7 @@ private:
     sf::RenderWindow* _window;
     Paddle* _paddle;
     Ball* _ball;
+    Ball* ball_List[4];
     BrickManager* _brickManager;
     PowerupManager* _powerupManager;
     MessagingSystem* _messagingSystem;
