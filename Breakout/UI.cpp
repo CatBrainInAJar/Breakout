@@ -84,7 +84,7 @@ void UI::lifeLost(int lives)
 }
 void UI::lifegain(int lives)
 {
-	_lives[_lives.size() - 1 + lives].setFillColor(sf::Color::Transparent);
+	_lives[2].setFillColor(sf::Color::Transparent);
 }
 
 void UI::render()
